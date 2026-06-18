@@ -65,16 +65,13 @@ public class GuardedBlock {
             synchronized (LOCK) {
                 while (this.message != null) {
                     try {
-                        // 1. Current thread releases lock.
-                        // 2. Current thread waits.
-                        // Can be called only on the acquired lock.
                         LOCK.wait();
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 }
                 this.message = message;
-                LOCK.notifyAll(); // Can be called only on the acquired lock.
+                LOCK.notifyAll();
             }
         }
 
@@ -82,9 +79,6 @@ public class GuardedBlock {
             synchronized (LOCK) {
                 while (message == null) {
                     try {
-                        // 1. Current thread releases lock.
-                        // 2. Current thread waits.
-                        // Can be called only on the acquired lock.
                         LOCK.wait();
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
@@ -92,7 +86,7 @@ public class GuardedBlock {
                 }
                 String processedMessage = message;
                 message = null;
-                LOCK.notifyAll(); // Can be called only on the acquired lock.
+                LOCK.notifyAll();
                 return processedMessage;
             }
         }

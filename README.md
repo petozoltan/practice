@@ -9,8 +9,8 @@ Practicing
 
 Application
 
-- Java 25
 - Spring Boot 4
+- Java 25
 - JUnit 6
 
 Code

@@ -25,6 +25,13 @@ public class DeadlockWithLock {
 
         assertTrue(LOCKING_AB.isAlive());
         assertTrue(LOCKING_BA.isAlive());
+
+        if (LOCKING_AB.isAlive()) {
+            LOCKING_AB.interrupt();
+        }
+        if (LOCKING_BA.isAlive()) {
+            LOCKING_BA.interrupt();
+        }
     }
 
     static void lockFirstThenSecond(final Lock lock1, final Lock lock2) {

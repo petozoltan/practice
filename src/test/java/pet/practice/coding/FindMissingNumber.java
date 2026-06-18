@@ -10,8 +10,10 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 public class FindMissingNumber {
 
-    final int SMALLEST = 1;
-    final int BIGGEST = 100;
+    static final int SMALLEST = 1;
+    static final int LARGEST = 100;
+
+    static final Random RANDOM = new Random();
 
     // ————————————————————————————————————————
     // Solutions
@@ -63,7 +65,7 @@ public class FindMissingNumber {
 
     @Test
     void testFindMissingNumber_Random() {
-        testFindMissingNumber(createRandomNumber());
+        testFindMissingNumber(createRandomIntInRange(SMALLEST, LARGEST));
     }
 
     @Test
@@ -73,7 +75,7 @@ public class FindMissingNumber {
 
     @Test
     void testFindMissingNumber_Largest() {
-        testFindMissingNumber(BIGGEST);
+        testFindMissingNumber(LARGEST);
     }
 
     // ————————————————————————————————————————
@@ -81,16 +83,17 @@ public class FindMissingNumber {
     // ————————————————————————————————————————
 
     List<Integer> createList() {
-        List<Integer> numbers = new ArrayList<>(IntStream.rangeClosed(SMALLEST, BIGGEST).boxed().toList());
-        assumeTrue(numbers.size() == BIGGEST - SMALLEST + 1);
+        List<Integer> numbers = new ArrayList<>(IntStream.rangeClosed(SMALLEST, LARGEST).boxed().toList());
+        assumeTrue(numbers.size() == LARGEST - SMALLEST + 1);
         Collections.shuffle(numbers);
         return numbers;
     }
 
-    int createRandomNumber() {
-        final int randomNumber = new Random().nextInt(BIGGEST - SMALLEST + 1) + SMALLEST;
-        assumeTrue(SMALLEST <= randomNumber && randomNumber <= BIGGEST);
-        return randomNumber;
+    /// `Random.nextInt(int bound)` generates between 0 (inclusive) and bound (exclusive).
+    static int createRandomIntInRange(int smallest, int largest) {
+        final int randomInt = RANDOM.nextInt(largest - smallest + 1) + smallest;
+        assumeTrue(SMALLEST <= randomInt && randomInt <= LARGEST);
+        return randomInt;
     }
 
     void removeNumber(final List<Integer> numbers, final int number) {

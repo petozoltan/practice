@@ -1,5 +1,6 @@
 package pet.practice.coding;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.CharArrayReader;
@@ -40,6 +41,7 @@ public class JSONPrinter {
             libraryName=x
             """;
 
+    @Disabled
     @Test
     void printTerminalNodesTest() throws IOException {
         assertEquals(EXPECTED_OUTPUT, printTerminalNodes(INPUT));

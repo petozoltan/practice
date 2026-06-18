@@ -30,7 +30,10 @@ _Only objects that have identity can be used as locks._
 
 **`Object` class instance methods** → manage current or all threads that have acquired this lock
 
-- `wait()`
-- `notify()` / `notifyAll()`
+- `wait()` → Current thread releases the lock, and waits for `notify()` / `notifyAll()`.
+- `notify()` → Wakes up one random waiting thread.
+- `notifyAll()` → Wakes up all waiting threads.
 
-_Can be called only from a thread that has acquired this lock, i.e. within a synchronized method or block on the same lock._
+
+- _Can be called only from a thread that has acquired this lock, i.e. within a synchronized method or block on the same lock._
+- _Manage the current thread but it is not available from the code that is executed by the thread._
