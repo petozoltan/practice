@@ -15,6 +15,7 @@ public class GuardedBlock {
     static final int WAIT_MAX = 5000;
 
     static final MessageQueue MESSAGE_QUEUE = new MessageQueue();
+
     static final Object LOCK = new Object();
     static final Random RANDOM = new Random();
 
@@ -57,6 +58,7 @@ public class GuardedBlock {
     // Queue
     // ————————————————————————————————————————
 
+    /// The guarded blocks.
     static class MessageQueue {
 
         String message = null;

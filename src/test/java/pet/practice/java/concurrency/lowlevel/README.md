@@ -6,11 +6,12 @@ Most important low-level Java API for threads
 
 - `start()`
 - `join()`
+- `interrupt()`
 
 **`Thread` class static methods** → manage the current thread
 
-- `sleep()`
-- `yield()`
+- `sleep(ms)`
+- `currentThread()`
 
 **`Runnable` interface** → the code to be executed by a thread
 
