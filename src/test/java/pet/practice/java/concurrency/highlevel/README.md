@@ -2,7 +2,15 @@
 
 It has only `void execute(Runnable)`. Use `ExecutorService` instead.
 
-See `Executor` javadoc for simple examples.
+How to create a regular one-thread-per-task `ExecutorService`:
+
+- Similar to the low-level `new Thread(runnable).start()`.
+
+```java
+Executor newThreadPerTaskExecutor = (runnable) -> new Thread(runnable).start();
+```
+
+See `Executor` javadoc for more examples.
 
 ### ExecutorService interface
 
@@ -39,7 +47,8 @@ Factory methods to create various types of `ExecutorService`s.
 How to create a regular one-thread-per-task `ExecutorService`:
 
 - Similar to the low-level `new Thread(runnable).start()`.
-- Based on the implementation of `Executors.newVirtualThreadPerTaskExecutor()`:
+- Based on the implementation of `Executors.newVirtualThreadPerTaskExecutor()`.
+- But it is recommended to use an existing factory instead, like `Executors.newCachedThreadPool()`.
 
 ```java
 ExecutorService newPlatformThreadPerTaskExecutor = Executors.newThreadPerTaskExecutor(Thread.ofPlatform().factory());
