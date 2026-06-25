@@ -15,4 +15,4 @@ Application
 
 Code
 
-- Find the code under the `test` folder.
+- The examples are created as unit tests. Please find the code under the [test](https://github.com/petozoltan/practice/tree/main/src/test/java/pet/practice) folder.
