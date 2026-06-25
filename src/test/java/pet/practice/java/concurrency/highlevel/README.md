@@ -22,16 +22,18 @@ Implements `AutoCloseable`.
 - `close()` does not terminate the tasks.
 - `close()` executes before `finally` block. (So you cannot stop the tasks in `finally` block.)
 
-Solution 1:
+Solution 1
 
 - Interrupt the threads with `Future.cancel(true)` in the `try` block.
 
-Solution 2:
+Solution 2
 
 - Don't create `ExecutorService` with try-with-resources statement.
 - Use `Lock.lockInterruptibly()` instead of `Lock.lock()`.
 - Call `ExecutorService.shutdownNow()`
 - Optionally, `ExecutorService.awaitTermination()`.
+
+Basic methods
 
 | Method          | Usage                                                                                | Java |
 |-----------------|--------------------------------------------------------------------------------------|:----:|
