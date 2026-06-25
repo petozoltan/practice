@@ -61,8 +61,9 @@ public class Deadlock {
 
         } finally {
             // Normal shutdown() will not interrupt the threads.
-            executorService.shutdownNow();
-            executorService.awaitTermination(3, SECONDS);
+            // Returns the still running tasks.
+            System.out.println(executorService.shutdownNow());
+            assumeTrue(executorService.awaitTermination(3, SECONDS));
         }
     }
 
@@ -86,9 +87,8 @@ public class Deadlock {
             assertFalse(futureBA.isDone());
 
         } finally {
-            // Normal shutdown() will not interrupt the threads.
-            executorService.shutdownNow();
-            executorService.awaitTermination(3, SECONDS);
+            System.out.println(executorService.shutdownNow());
+            assumeTrue(executorService.awaitTermination(3, SECONDS));
         }
     }
 

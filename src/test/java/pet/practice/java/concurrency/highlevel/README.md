@@ -25,6 +25,7 @@ Implements `AutoCloseable`.
 Solution 1
 
 - Interrupt the threads with `Future.cancel(true)` in the `try` block.
+- See in the code [Deadlock.testDeadlockWithCancel()](https://github.com/petozoltan/practice/blob/main/src/test/java/pet/practice/java/concurrency/highlevel/deadlock/Deadlock.java#L16).
 
 Solution 2
 
@@ -32,6 +33,7 @@ Solution 2
 - Use `Lock.lockInterruptibly()` instead of `Lock.lock()`.
 - Call `ExecutorService.shutdownNow()`
 - Optionally, `ExecutorService.awaitTermination()`.
+- See in the code [Deadlock.testDeadlockWithShutdown()](https://github.com/petozoltan/practice/blob/main/src/test/java/pet/practice/java/concurrency/highlevel/deadlock/Deadlock.java#L44).
 
 Basic methods
 
