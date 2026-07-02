@@ -37,4 +37,3 @@ _Only objects that have identity can be used as locks._
 
 
 - _Can be called only from a thread that has acquired this lock, i.e. within a synchronized method or block on the same lock._
-- _Manage the current thread but it is not available from the code that is executed by the thread._
